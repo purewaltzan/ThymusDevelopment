@@ -189,3 +189,23 @@ regulonActivity_byCellType <- sapply(split(rownames(cellInfo), cellInfo$seuratCl
                                      function(cells) rowMeans(getAUC(regulonAUC)[,cells]))
 regulonActivity_byCellType <- regulonActivity_byCellType[rowMax(regulonActivity_byCellType)>0.02,]
 regulonActivity_byCellType_Scaled <- t(scale(t(regulonActivity_byCellType), center = T, scale=T))
+library(ComplexHeatmap)
+png(filename = '../figure/heatmapSCENIC.png',
+    height = 50,
+    width = 25,
+    units = 'cm',
+    res = 1200)
+ComplexHeatmap::Heatmap(regulonActivity_byCellType_Scaled, name="Regulon activity (%)", col = c("chartreuse4","wheat","violetred4")
+                        ,row_names_max_width = ComplexHeatmap::max_text_width(rownames(regulonActivity_byCellType_Scaled),gp=gpar(fontsize=20,fontface='bold'))
+                        ,width = unit(10, "cm")
+                        ,column_names_gp = gpar(fontsize = 20,fontface="bold")
+                        ,row_names_gp = gpar(fontsize = 20,fontface="bold")
+                        ,heatmap_legend_param = list(legend_height = unit(100,'mm')
+                                                     , legend_weight = unit(80,'mm')
+                                                     , title_position = 'leftcenter-rot'
+                                                     , title_gp = gpar(fontsize = 30, fontface = "bold")
+                                                     , labels_gp = gpar(fontsize = 20)
+                                                     
+                        )
+)
+dev.off()
