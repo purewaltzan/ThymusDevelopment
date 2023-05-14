@@ -1,4 +1,4 @@
-setwd("sf_Projects/codeforsubmit/")
+setwd("./")
 source('libraryAndFunctions.R')
 dir.create('figure')
 projectName<-'TEC'
@@ -17,7 +17,7 @@ mca<-preprocessData(data=CPM.data,
                     perp = 20,  # perplexity
                     fin_dims = 30, # final dimension of transform space
                     ini_dims = NULL,
-                    platform = 'outputfiles',
+                    platform = 'MATLAB',
                     slot = 'data',
                     selectedFeatures = 300
 )
