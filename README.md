@@ -1,5 +1,5 @@
 # ThymusDevelopment
 Code for Thymus development Single cell
-Copy rawcounts.csv to the same folder
-Run parseData.m in MATLAB
-Run main.R in R
+1: Copy rawcounts.csv to the same folder. 
+2: Run parseData.m in MATLAB. 
+3: Run main.R in R
